@@ -18,17 +18,10 @@ module.exports = function(wallaby) {
     debug: true,
 
     setup: (wallaby) => {
-      /* eslint-disable global-require */
       const conf = require('./package.json').jest;
-      /* eslint-enable global-require */
 
-      ['^lib/(.*)$',
-        '^components/(.*)',
-        '^.+\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$',
-        '\\.(css|scss)$'].forEach((pattern) => {
-          console.info(pattern);
-          conf.moduleNameMapper[pattern] = conf.moduleNameMapper[pattern].replace('<rootDir>', wallaby.projectCacheDir);
-        });
+      conf.moduleNameMapper['^lib/(.*)$'] = conf.moduleNameMapper['^lib/(.*)$'].replace('<rootDir>', wallaby.projectCacheDir);
+      conf.moduleNameMapper['^components/(.*)'] = conf.moduleNameMapper['^components/(.*)'].replace('<rootDir>', wallaby.projectCacheDir);
 
       wallaby.testFramework.configure(conf);
     },
