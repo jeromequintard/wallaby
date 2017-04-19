@@ -10,9 +10,6 @@ const commonConfig = require('./webpack.common.js');
 // Pour fusioner les configurations de webpack
 const webpackMerge = require('webpack-merge');
 
-// Pour définir des variables accessibles via le code
-const DefinePlugin = require('webpack/lib/DefinePlugin');
-
 // Définie une constante sur l'environnement courant
 const ENV = process.env.ENV = process.env.NODE_ENV = 'development';
 
@@ -39,36 +36,8 @@ module.exports = function() {
     // Génère le source map
     devtool: 'eval',
 
-    // Module (loaders)
-    module: {
-      rules: [
-
-        // Fichier CSS
-        // {
-        //     test: /\.css$/,
-        //     loader: ['style-loader', 'css-loader'],
-        //     include: [helpers.getPath('src/assets/css'), helpers.getPath('src/lib/**/')]
-        // },
-
-        // Fichier SASS
-        // {
-        //     test: /\.scss$/,
-        //     loader: ['style-loader', 'css-loader', 'sass-loader'],
-        //     include: [helpers.getPath('src/assets/sass'), helpers.getPath('src/lib/**/')]
-        // }
-
-      ],
-    },
-
     // Plugins (tâches)
     plugins: [
-
-      new DefinePlugin({
-        ENV: JSON.stringify(ENV),
-        'process.env': {
-          ENV: JSON.stringify(ENV),
-        },
-      }),
 
       // Nomme le plugins (console)
       new webpack.NamedModulesPlugin(),

@@ -2,24 +2,18 @@
   "name": "ikise",
   "version": "1.0.0",
   "private": true,
-  "keywords": [
-    "Ikise"
-  ],
   "license": "MIT",
   "description": "Ikise",
   "author": "Jérôme Quintard <jquintard@ikise.com>",
   "homepage": "http://www.ikise.com",
   "scripts": {
-    "build:client": "yarn run build:dev",
-    "build:client:dev": "yarn run clean && webpack --config config/webpack.dev.js --progress",
-    "build:client:prod": "yarn run clean && webpack --config config/webpack.prod.js --progress --bail",
+    "build": "yarn run build:dev",
+    "build:dev": "yarn run clean && webpack --config config/webpack.dev.js --progress",
     "clean": "rimraf dist",
     "test": "jest",
-    "test:update": "yarn test -- -u",
     "lint": "eslint src config .storybook",
-    "start": "concurrently \"yarn server:dev\" \"yarn client:dev\"",
-    "client": "yarn run client:dev",
-    "client:dev": "webpack-dev-server --config config/webpack.dev.js --inline --progress --hot --profile --watch --content-base src/client/"
+    "start": "yarn run start:dev",
+    "start:dev": "webpack-dev-server --config config/webpack.dev.js --inline --progress --hot --profile --watch --content-base src/client/"
   },
   "jest": {
     "testMatch": [
@@ -40,7 +34,6 @@
     }
   },
   "devDependencies": {
-    "@kadira/storybook": "^2.35.3",
     "@webpack-blocks/dev-server2": "^0.4.0",
     "@webpack-blocks/webpack2": "^0.4.0",
     "babel-core": "^6.24.1",
@@ -60,10 +53,6 @@
     "eslint-plugin-no-unused-vars-rest": "^1.0.6",
     "eslint-plugin-react": "^6.10.3",
     "file-loader": "^0.11.1",
-    "gulp": "^3.9.1",
-    "gulp-svg2png": "^2.0.2",
-    "gulp-svgo": "^1.0.3",
-    "gulp-watch": "^4.3.11",
     "jest-cli": "^19.0.2",
     "node-sass": "^4.5.2",
     "npm-check-updates": "^2.10.5",

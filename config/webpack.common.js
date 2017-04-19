@@ -36,19 +36,6 @@ module.exports = function (options) {
     module: {
       rules: [
 
-        // Eslint
-        {
-          enforce: 'pre',
-          test: /\.jsx?$/,
-          loader: 'eslint-loader',
-          exclude: [
-            /(node_modules|\.spec\.js)/,
-          ],
-          options: {
-            quiet: true,
-          },
-        },
-
         // Fichier JS
         {
           test: /\.jsx?$/,
@@ -61,49 +48,6 @@ module.exports = function (options) {
           test: /\.jsx$/,
           loader: 'happypack/loader',
           exclude: /node_modules/,
-        },
-
-        // Fichiers JSON
-        {
-          test: /\.json$/,
-          loader: 'json-loader',
-          exclude: /node_modules/,
-        },
-
-        // Fichiers CSS
-        {
-          test: /\.css$/,
-          loader: ['style-loader', 'css-loader'],
-          exclude: /node_modules/,
-       //       exclude: [helpers.getPath('src/assets/css'), helpers.getPath('src/lib/**/')]
-        },
-
-        // Fichier SASS
-        {
-          test: /\.scss$/,
-          use: [
-            { loader: 'style-loader' },
-            { loader: 'css-loader' },
-            { loader: 'sass-loader',
-              options: {
-                data: '@import "src/client/assets/sass/themes/light/theme.scss";',
-              },
-            },
-          ],
-          exclude: /node_modules/,
-      //          exclude: [helpers.getPath('src/assets/sass'), helpers.getPath('src/scss/**/')]
-        },
-
-        // Images
-        {
-          test: /\.(jpg|png|gif)$/,
-          loader: 'file-loader',
-        },
-
-        // Polices
-        {
-          test: /\.(eot|woff2?|svg|ttf)([\?]?.*)$/,
-          loader: 'file-loader',
         },
       ],
     },
