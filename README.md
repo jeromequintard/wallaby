@@ -1,3 +1,3 @@
 # wallaby
 
-A wallaby/jest test
+Intégration de wallaby dans l'écosystème react/jest.
